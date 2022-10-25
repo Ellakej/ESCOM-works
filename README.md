@@ -1,5 +1,5 @@
 # ESCOM-works
-Repositorio contenedor de todos los proyectos y trabajos presentados en el area de desarrollo de software durante mi estancia en la ESCOM
+Repository that contains all my course projects during my Artificial Intelligence Engineering degree at ESCOM.
 
 
 
