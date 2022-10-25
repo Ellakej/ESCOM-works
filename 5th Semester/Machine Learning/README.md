@@ -1,4 +1,4 @@
-![Warning advice](../../assets/warning.png) ### Warning, some parts of the word documentation are on Spanish
+<img src="../../assets/warning.png" alt="drawing" width="200"/> ### Warning, some parts of the word documentation are on Spanish
 
 # Machine Learning
 
