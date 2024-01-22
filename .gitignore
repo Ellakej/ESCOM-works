@@ -1,0 +1,9 @@
+# Ignorar los archivos del sistema mac
+.DS_store
+
+# Ignorar los archivos de imagenes ppm
+*.ppm
+
+#Ignorar los archivos de imagenes pbm
+*.pbm
+
