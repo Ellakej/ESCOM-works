@@ -302,9 +302,9 @@ ImageRGB add_ppm(const ImageRGB& img1, const ImageRGB& img2) {
         RGB p1 = img1.data[i];
         RGB p2 = img2.data[i];
 
-        sum.data[i].r = p1.r + p2.r;
-        sum.data[i].g = p1.g + p2.g;
-        sum.data[i].b = p1.b + p2.b;
+        sum.data[i].r = p1.r * p2.r;
+        sum.data[i].g = p1.g * p2.g;
+        sum.data[i].b = p1.b * p2.b;
     }
     
     return sum;
@@ -615,7 +615,6 @@ void display_imagePBM_info(const ImagePBM& img, const std::string& title) {
 
 
 // Funciones de perceptrón
-
 // Función de activación (devuelve 1 si la entrada es mayor o igual a 0, y 0 en caso contrario)
 int activation(int z) {
   return z >= 0 ? 1 : 0;
@@ -626,9 +625,12 @@ class Perceptron {
  public:
   // Constructor: inicializa los pesos del perceptrón con valores aleatorios
   Perceptron(int n) {
-    pesos_ = std::vector<int>(n);
+    pesos_ = std::vector<double>(n);
     for (int i = 0; i < n; i++) {
-      pesos_[i] = rand() % 256; // Genera un número aleatorio entre 0 y 255
+        srand(time(0));         // Semilla para inicializar
+        int rand_num = rand();
+        // Inicializados entre 0 y 1
+        pesos_[i] = static_cast<double>(rand_num) / RAND_MAX;
     }
   }
 
@@ -636,18 +638,16 @@ class Perceptron {
   int calcular_salida(const ImagePBM& imagen) {
     int z = 0; // Sumatoria ponderada de los píxeles
 
-    // Recorre cada píxel de la imagen y calcula la contribución a la suma ponderada
-    for (int i = 0; i < imagen.w; i++) {
-      for (int j = 0; j < imagen.h; j++) {
-        z += pesos_[i * imagen.w + j] * imagen.data[i * imagen.w + j]; // Multiplica el valor del píxel por el peso correspondiente y suma al total
-      }
+    // Recorrido por el vector de datos, por cada pixel
+    for(int i = 0; i < imagen.data.size(); i++){
+        // Ajuste de pesos mediante combinación lineal
+        z += pesos_[i] * imagen.data[i];
     }
-
     // Aplica la función de activación a la suma ponderada para obtener la salida del perceptrón
     return activation(z);
   }
 
  public:
   // Pesos del perceptrón (vector de enteros)
-  std::vector<int> pesos_;
+  std::vector<double> pesos_;
 };

@@ -17,14 +17,21 @@ int main() {
     // Padding de imagenes 
     ImageRGB img1_padded = add_square_padding(img1);
     save_ppm(img1_padded, "img1_padded.ppm");
+    ImageGrayscale img1_grayscale = to_grayscale_coefficients(img1);
+    save_pgm(img1_grayscale, "imagen1grayscale.pgm");
 
     ImageRGB img2_padded = add_square_padding(img2);
     save_ppm(img2_padded, "img2_padded.ppm");
+    ImageGrayscale img2_grayscale = to_grayscale_mean(img2);
+    save_pgm(img2_grayscale, "imagen2grayscale.pgm");
+
 
     // Suma de imagenes
     ImageRGB img_res = add_ppm(img1_padded, img2_padded);
 
     save_ppm(img_res, "img_res.ppm");
+
+
 
     // Debug
     //std::cout << "Datos de imagen con padding: " << "\nWidth: " << img1_padded.w << "\nHeight: " << img1_padded.h << std::endl;

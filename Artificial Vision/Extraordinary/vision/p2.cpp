@@ -11,14 +11,21 @@
 
 int main(){
     // Parametros
-    std::string input_path = "/Users/ricardoneftalygarciaking/Documents/ESCOM/vision/number_dataset/train/";
+    std::string input_path = "/Users/ricardoneftalygarciaking/Documents/ESCOM-works/Artificial Vision/Extraordinary/vision/number_dataset/train/";
     int n_train_images = 5760;          // Esto deberia ser dinamico para tomar el total de archivos
     int no_perceptrones = 10;
     int ciclos_entrenamiento = 10000;
 
+    // Carga de 1 dato
+    //ImagePBM img1 = load_pbm("0.pbm");
+    //int w = img1.w;
+    //int h = img1.h;
+    
+
     // Convertir dataset a pbm
     //convertJPGtoPBM("number_dataset/train/", "number_dataset/train_output/");
 
+    
     // Cargar el conjunto de datos de entrenamiento
     std::vector<ImagePBM> entrenamiento;
     for (int i = 0; i < n_train_images; i++) {
@@ -40,8 +47,11 @@ int main(){
     // Inicializado por constructor
     std::vector<Perceptron> perceptrones(10, Perceptron(w*h));
 
+    std::cout << perceptrones[0].pesos_.size() << std::endl;
+    
 
     // Entrenar el reconocedor
+    /*
     for (int i = 0; i < ciclos_entrenamiento; i++) {
         for (int j = 0; j < entrenamiento.size(); j++) {
             for (int k = 0; k < entrenamiento[j].w * entrenamiento[j].h; k++) {
@@ -54,7 +64,7 @@ int main(){
         }
     }
     std::cout << "\nEntrenamiento finalizado" << std::endl;
-    
+    */
 
 
     return 0;

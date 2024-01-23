@@ -42,7 +42,7 @@ int main(){
 
     // Aplicación de kernel sobel (guardado en cabecera)
     // Sobel horizontal
-    ImageGrayscale img1_sobelx = apply_kernel(img1_grayscale_mean, sobel_x[0], 3, 0.2F, 1);
+    ImageGrayscale img1_sobelx = apply_kernel(img1_grayscale_mean, sobel_x[0], 3, 1, 1);
     // Sobel vertical
     ImageGrayscale img1_sobely = apply_kernel(img1_grayscale_mean, sobel_y[0], 3, 0.2F, 1);    
     // Suma de sobel_x y sobel_y
